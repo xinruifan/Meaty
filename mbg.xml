@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/meaty"
+        userId="root"
+        password="fan81539938">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 实体类javabean -->
+    <javaModelGenerator targetPackage="com.sixCoders.suse.model" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	<!-- mapper配置文件 -->
+    <sqlMapGenerator targetPackage="mapper"  targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+	<!-- 接口dao -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.sixCoders.suse.dao"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table tableName="user" domainObjectName="User" ></table>
+    <table tableName="seller" domainObjectName="Seller" ></table>
+    <table tableName="shop" domainObjectName="Shop" ></table>
+    <table tableName="order" domainObjectName="Order" ></table>
+     <table tableName="cart" domainObjectName="Cart" ></table>
+    
+  </context>
+</generatorConfiguration>

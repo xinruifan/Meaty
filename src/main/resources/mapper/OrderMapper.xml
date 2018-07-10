@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixCoders.suse.dao.OrderMapper">
+ 
+ <resultMap id="orderMap" type="com.sixCoders.suse.model.Order">
+ 
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="order_amount" jdbcType="DECIMAL" property="orderAmount" />
+    <result column="order_state" jdbcType="INTEGER" property="orderState" />
+    <result column="order_time" jdbcType="VARCHAR" property="orderTime" />
+    <result column="order_name" jdbcType="VARCHAR" property="orderName" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="s_id" jdbcType="INTEGER" property="sId" />
+    <result column="p_id" jdbcType="INTEGER" property="pId" />
+    	<association property="shop" javaType="com.sixCoders.suse.model.Shop">
+    		<id column="p_id" jdbcType="INTEGER" property="pId" />
+			<result column="p_name" jdbcType="VARCHAR" property="pName" />
+			<result column="p_picture" jdbcType="VARCHAR" property="pPicture" />
+			<result column="p_content" jdbcType="VARCHAR" property="pContent" />
+			<result column="p_price" jdbcType="DECIMAL" property="pPrice" />
+    	</association>
+  </resultMap>
+  
+  <!-- List<Order> selectAll(int userid); -->
+  <select id="selectAll" resultMap="orderMap">
+   		select torder.order_id,torder.order_num ,torder.order_amount,torder.order_state,
+   		torder.order_time,torder.order_name,s.p_name,s.p_picture,s.p_content,s.p_price
+		from t_order torder,shop s where torder.p_id=s.p_id and torder.user_id=#{userid}
+  </select>
+  
+  
+  <!--  List<Order> updateByStateCollect(order torder); -->
+    <update id="updateByStateCollect">
+    	update t_order
+		set order_state=3
+		where order_id=#{orderId} 
+    </update>
+    
+     
+    <!--  Order selectById(int orderid); -->
+    <select id="selectById" resultType="com.sixCoders.suse.model.Order">
+    	select * from t_order where order_id=#{orderid}
+    </select>
+    
+    
+    <!-- List<Order> selectByLikeName(@Param("likepname") String likepname,@Param("userid")int userid); -->
+    <select id="selectByLikeName" parameterType="string" resultMap="orderMap">
+    	<bind name="lname" value="'%' + likepname + '%'" />
+    	select torder.order_id,torder.order_num ,torder.order_amount,torder.order_state,
+   		torder.order_time,torder.order_name,s.p_name,s.p_picture,s.p_content,s.p_price
+		from t_order torder,shop s 
+		where  torder.order_name like #{lname} and torder.p_id=s.p_id and torder.user_id=#{userid}
+    </select>
+    
+     <!--List<Order> selectByOrderId(@Param("orderid")int orderid,@Param("userid"); -->
+    <select id="selectByOrderId" resultMap="orderMap">
+    	select torder.order_id,torder.order_num ,torder.order_amount,torder.order_state,
+   		torder.order_time,torder.order_name,s.p_name,s.p_picture,s.p_content,s.p_price
+		from t_order torder,shop s 
+		where torder.order_id=#{orderid}  and torder.p_id=s.p_id and torder.user_id=#{userid}
+    </select>
+</mapper>

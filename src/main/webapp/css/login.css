@@ -1,0 +1,108 @@
+/*第4单元 项目4-1 用户登录页面*/
+body {
+    /*设置背景图片 不平铺 水平和垂直都居中 固定不动*/
+    background:url(../images/bodyback.jpg) no-repeat center center fixed;
+    /*保持图像本身的宽高比例，将图片缩放到正好完全覆盖定义背景的区域。*/
+    background-size: cover;
+    padding-top:80px;
+    
+}
+
+form {
+    width: 343px;
+    height: 360px;
+    margin:0 auto;
+    padding:30px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    /*盒阴影：水平和垂直偏移量都为0、阴影模糊半径13px、阴影扩展半径3px、黑色透明度50%*/
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    overflow: hidden;/*隐藏溢出内容*/
+   
+}
+input {
+    width: 276px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 4px;
+    display:block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:18px;
+    color:#fff;
+    padding-left:45px;
+    padding-right:20px;
+    margin-bottom:20px;
+    background: rgba(255, 255, 255, 0.4)  no-repeat 16px 16px;
+}
+input.code {
+    width: 100px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 4px;
+    display:block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:18px;
+    color:#fff;
+    padding-left:45px;
+    padding-right:20px;
+    margin-bottom:20px;
+    background: rgba(255, 255, 255, 0.4)  no-repeat 16px 16px;
+}
+.border-radius {
+    width: 200px;
+    height: 200px;
+    margin: 40px auto;
+    background:url(../images/2.jpg) no-repeat center center;
+    border:5px solid rgba(255,255,255,.4);
+    border-radius: 200px;
+}
+/*设置 当光标放到type=submit上时 为一只小手*/
+input[type=submit] {
+    cursor:pointer;
+}
+/*设置输入框的提示文字为白色*/
+::-webkit-input-placeholder {
+    color: #fff;
+}
+/*当该input元素获得焦点时，设置背景颜色及盒阴影*/
+input:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+    overflow: hidden;
+}
+.btn {
+    width: 138px;
+    height: 44px;
+    border-radius: 4px;
+    margin:0 auto;
+    background: #00B0DC;
+    padding: 10.5px 21px;
+    border-radius: 6px;
+    color: #e1e1e1;
+}
+/*当鼠标悬浮在该元素时，设置边框、文字阴影、背景颜色及文字颜色*/
+.btn:hover {
+    border: 1px solid #253737;
+    text-shadow: 0 1px 0 #333333;
+    background: #00B0DC;
+    color: #fff;
+}
+/*当该元素激活(在鼠标点击与释放之间发生的事件)时，设置外边距、文字阴影、边框、背景颜色
+及文字颜色*/
+.btn:active {
+    margin-top:1px;
+    text-shadow: 0 -1px 0 #333333;
+    border: 1px solid #253737;
+    background: #00B0DC;
+    color: #fff;
+}
+
+
+.img{
+	position:absolute;
+	margin-top:-70px;
+	margin-left:180px;
+	width:150px;
+	 height:50px
+}
